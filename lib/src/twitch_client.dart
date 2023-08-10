@@ -2,176 +2,81 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:twitch_wss/src/twitch_message.dart';
+
 const String _baseUrl = 'wss://irc-ws.chat.twitch.tv:443';
 
-class TwitchClient implements Stream<dynamic>, StreamSink<dynamic> {
+class TwitchClient extends Stream<TwitchMessage> {
   static WebSocket? _socket;
 
-  final String _nick;
+  final StreamController<TwitchMessage> _controller =
+      StreamController<TwitchMessage>.broadcast();
+
+  Stream<TwitchMessage> get _internalStream => _controller.stream;
+
+  final String nick;
+
   final String _token;
 
-  TwitchClient._(this._nick, this._token);
+  TwitchClient._(this.nick, this._token);
 
-  static Future<TwitchClient> create(String nick, String token) async {
-    TwitchClient _instance = TwitchClient._(nick, token);
+  static Future<TwitchClient> create(String nick, String token,
+      {List<String>? channels}) async {
+    TwitchClient instance = TwitchClient._(nick, token);
     _socket = await WebSocket.connect(_baseUrl);
 
-    _socket!.addUtf8Text(utf8.encode('PASS ${_instance._token}\r\n'));
-    _socket!.addUtf8Text(utf8.encode('NICK ${_instance._nick}\n\r'));
+    _socket!.listen(instance._handleData,
+        onError: instance._handleError, onDone: instance._handleDone);
 
-    return _instance;
+    try {
+      _socket!.addUtf8Text(utf8.encode('PASS $token'));
+      _socket!.addUtf8Text(utf8.encode('NICK $nick'));
+    } catch (e) {
+      print(e);
+    }
+
+    return instance;
+  }
+
+  void _handleData(dynamic data) {
+    String raw = data is String ? data : utf8.decode(data);
+
+    if (raw.isEmpty) return;
+
+    var message = TwitchMessage.parse(raw);
+
+    _controller.add(message);
+  }
+
+  void _handleError(dynamic error) {
+    _controller.addError(error);
+  }
+
+  void _handleDone() {
+    if (_socket != null) {
+      _socket!.close();
+    }
+
+    _controller.close();
+  }
+
+  void close() {
+    _socket?.close();
+
+    _controller.close();
+  }
+
+  void add(String message) {
+    _socket?.addUtf8Text(utf8.encode(message));
   }
 
   @override
-  Future<bool> any(bool Function(dynamic element) test) => _socket!.any(test);
-
-  @override
-  Stream asBroadcastStream(
-          {void Function(StreamSubscription subscription)? onListen,
-          void Function(StreamSubscription subscription)? onCancel}) =>
-      _socket!.asBroadcastStream(onListen: onListen, onCancel: onCancel);
-
-  @override
-  Stream<E> asyncExpand<E>(Stream<E>? Function(dynamic event) convert) =>
-      _socket!.asyncExpand(convert);
-
-  @override
-  Stream<E> asyncMap<E>(FutureOr<E> Function(dynamic event) convert) =>
-      _socket!.asyncMap(convert);
-
-  @override
-  Stream<R> cast<R>() => _socket!.cast<R>();
-
-  @override
-  Future<bool> contains(Object? needle) => _socket!.contains(needle);
-
-  @override
-  Stream distinct([bool Function(dynamic previous, dynamic next)? equals]) =>
-      _socket!.distinct(equals);
-
-  @override
-  Future<E> drain<E>([E? futureValue]) => _socket!.drain<E>(futureValue);
-
-  @override
-  Future<dynamic> elementAt(int index) => _socket!.elementAt(index);
-
-  @override
-  Future<bool> every(bool Function(dynamic element) test) =>
-      _socket!.every(test);
-
-  @override
-  Stream<S> expand<S>(Iterable<S> Function(dynamic element) convert) =>
-      _socket!.expand<S>(convert);
-
-  @override
-  Future get first => _socket!.first;
-
-  @override
-  Future firstWhere(bool Function(dynamic element) test,
-          {Function()? orElse}) =>
-      _socket!.firstWhere(test, orElse: orElse);
-  @override
-  Future<S> fold<S>(
-          S initialValue, S Function(S previous, dynamic element) combine) =>
-      _socket!.fold(initialValue, combine);
-
-  @override
-  Future<void> forEach(void Function(dynamic element) action) =>
-      _socket!.forEach(action);
-
-  @override
-  Stream handleError(Function onError, {bool Function(dynamic error)? test}) =>
-      _socket!.handleError(onError, test: test);
-
-  @override
-  bool get isBroadcast => _socket!.isBroadcast;
-
-  @override
-  Future<bool> get isEmpty => _socket!.isEmpty;
-
-  @override
-  Future<String> join([String separator = ""]) => _socket!.join(separator);
-
-  @override
-  Future get last => _socket!.last;
-
-  @override
-  Future lastWhere(bool Function(dynamic element) test, {Function()? orElse}) =>
-      _socket!.lastWhere(test, orElse: orElse);
-
-  @override
-  Future<int> get length => _socket!.length;
-
-  @override
-  StreamSubscription listen(void Function(dynamic event)? onData,
-          {Function? onError, void Function()? onDone, bool? cancelOnError}) =>
-      _socket!.listen(onData,
-          onError: onError, onDone: onDone, cancelOnError: cancelOnError);
-
-  @override
-  Stream<S> map<S>(S Function(dynamic event) convert) =>
-      _socket!.map<S>(convert);
-
-  @override
-  Future pipe(StreamConsumer streamConsumer) => _socket!.pipe(streamConsumer);
-
-  @override
-  Future reduce(Function(dynamic previous, dynamic element) combine) =>
-      _socket!.reduce(combine);
-
-  @override
-  Future get single => _socket!.single;
-
-  @override
-  Future singleWhere(bool Function(dynamic element) test,
-          {Function()? orElse}) =>
-      _socket!.singleWhere(test, orElse: orElse);
-
-  @override
-  Stream skip(int count) => _socket!.skip(count);
-
-  @override
-  Stream skipWhile(bool Function(dynamic element) test) =>
-      _socket!.skipWhile(test);
-
-  @override
-  Stream take(int count) => _socket!.take(count);
-
-  @override
-  Stream takeWhile(bool Function(dynamic element) test) =>
-      _socket!.takeWhile(test);
-
-  @override
-  Stream timeout(Duration timeLimit,
-          {void Function(EventSink sink)? onTimeout}) =>
-      _socket!.timeout(timeLimit, onTimeout: onTimeout);
-
-  @override
-  Future<List> toList() => _socket!.toList();
-
-  @override
-  Future<Set> toSet() => _socket!.toSet();
-
-  @override
-  Stream<S> transform<S>(StreamTransformer<dynamic, S> streamTransformer) =>
-      _socket!.transform(streamTransformer);
-
-  @override
-  Stream where(bool Function(dynamic event) test) => _socket!.where(test);
-
-  @override
-  void add(event) => _socket!.add(event);
-
-  @override
-  void addError(Object error, [StackTrace? stackTrace]) =>
-      _socket!.addError(error, stackTrace);
-
-  @override
-  Future addStream(Stream stream) => _socket!.addStream(stream);
-
-  @override
-  Future close() => _socket!.close();
-
-  @override
-  Future get done => _socket!.done;
+  StreamSubscription<TwitchMessage> listen(
+      void Function(TwitchMessage event)? onData,
+      {Function? onError,
+      void Function()? onDone,
+      bool? cancelOnError}) {
+    return _internalStream.listen(onData,
+        onError: onError, onDone: onDone, cancelOnError: cancelOnError);
+  }
 }

@@ -1,9 +1,12 @@
-import 'package:twitch_wss/src/twitch_client.dart';
+import 'package:twitch_wss/twitch_wss.dart';
 
 void main() async {
-  TwitchClient client = await TwitchClient.create('nick', 'token');
+  final client = await TwitchClient.create(
+      'dickhead2', 'oauth:23my81iedcsmgz9rtvlgsw33ats141');
 
-  await for (var data in client) {
-    print(data);
+  client.add('JOIN #saltybet');
+
+  await for (var message in client) {
+    print('message: ${message.toJson()}');
   }
 }

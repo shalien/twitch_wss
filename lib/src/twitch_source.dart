@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 @immutable
@@ -15,5 +17,12 @@ final class TwitchSource {
     }
 
     return TwitchSource._(parts.first, parts.last);
+  }
+
+  String toJson() {
+    return jsonEncode({
+      'nick': nick,
+      'host': host,
+    });
   }
 }

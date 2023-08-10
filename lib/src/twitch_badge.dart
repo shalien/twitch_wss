@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:meta/meta.dart';
+
 ///
 /// Represents a Twitch badge.
 ///
@@ -25,5 +29,12 @@ final class TwitchBadge {
   @override
   String toString() {
     return 'TwitchBadge{name: $name, value: $value}';
+  }
+
+  String toJson() {
+    return jsonEncode({
+      'name': name,
+      'value': value,
+    });
   }
 }

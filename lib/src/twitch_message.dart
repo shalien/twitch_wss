@@ -1,4 +1,7 @@
 import 'dart:collection';
+import 'dart:convert';
+
+import 'package:twitch_wss/src/twitch_command.dart';
 
 import 'twitch_badge.dart';
 import 'twitch_emote.dart';
@@ -20,18 +23,19 @@ final class TwitchMessage {
   /// [List] of the message emote sets.
   final UnmodifiableListView<int>? emoteSets;
 
-  final TwitchSource _source;
-  final String _command;
-  final String _params;
+  final TwitchSource? source;
+  final TwitchCommand? command;
+  final String? params;
 
-  TwitchMessage._(this._source, this._command, this._params, this.tags,
+  TwitchMessage._(this.source, this.command, this.params, this.tags,
       this.badges, this.emotes, this.emoteSets);
 
   factory TwitchMessage.parse(String raw) {
     List<String> parts = raw.split(' ');
     _Tag? tag;
-    late TwitchSource source;
-    late String command;
+    TwitchSource? source;
+    TwitchCommand? command;
+    String? params;
 
     // Check if the message has tags.
     if (parts.first.startsWith('@')) {
@@ -45,25 +49,36 @@ final class TwitchMessage {
       parts.removeAt(0);
     }
 
-    // Check if the message has a command.
-    if (!parts.first.startsWith(':')) {
-      command = parts.first.trim();
+    if (parts.isNotEmpty) {
+      StringBuffer commandBuffer = StringBuffer();
+
+      // Check if the message has params.
+      while (!parts.first.startsWith(':')) {
+        commandBuffer.write('${parts.first} ');
+        parts.removeAt(0);
+      }
+
+      if (commandBuffer.isNotEmpty) {
+        command = TwitchCommand.parse(commandBuffer.toString());
+      }
+
+      params = parts.join(' ').trim().substring(1);
     }
 
-    return TwitchMessage._(source, parts[1], parts[2], tag?.tags, tag?.badges,
+    return TwitchMessage._(source, command, params, tag?.tags, tag?.badges,
         tag?.emotes, tag?.emoteSets);
   }
 
-  void parseSource(String raw) {
-    throw UnimplementedError();
-  }
-
-  void _parseCommand(String raw) {
-    List<String> parts = raw.split(' ');
-  }
-
   String toJson() {
-    throw UnimplementedError();
+    return jsonEncode({
+      'source': source,
+      'command': command,
+      'params': params,
+      'tags': tags,
+      'badges': badges?.map((e) => e.toJson()).toList(),
+      'emotes': emotes?.map((e) => e.toJosn()).toList(),
+      'emoteSets': emoteSets,
+    });
   }
 }
 
@@ -104,6 +119,10 @@ final class _Tag {
       List<String> parsedTag = tag.split('=');
 
       String key = parsedTag.first;
+
+      if (key.startsWith('@')) {
+        key = key.substring(1);
+      }
 
       switch (key) {
         case 'badges':

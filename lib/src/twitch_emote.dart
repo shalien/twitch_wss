@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 ///
@@ -19,7 +21,7 @@ final class TwitchEmote {
   factory TwitchEmote.parse(String emote) {
     List<String> parts = emote.split(':');
 
-    List<String> positions = parts.last.split(',');
+    List<String> positions = parts.last.split('-');
 
     return TwitchEmote._(
       int.parse(parts.first),
@@ -31,5 +33,13 @@ final class TwitchEmote {
   @override
   String toString() {
     return 'TwitchEmote{id: $id, startPosition: $startPosition, endPosition: $endPosition}';
+  }
+
+  String toJosn() {
+    return jsonEncode({
+      'id': id,
+      'startPosition': startPosition,
+      'endPosition': endPosition,
+    });
   }
 }

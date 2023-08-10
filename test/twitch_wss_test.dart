@@ -3,14 +3,15 @@ import 'package:test/test.dart';
 
 void main() {
   group('A group of tests', () {
-    final client = TwitchClient();
-
     setUp(() {
       // Additional setup goes here.
     });
 
     test('First Test', () async {
-      client.start();
+      final client = await TwitchClient.create(
+          'dickhead2', 'oauth:23my81iedcsmgz9rtvlgsw33ats141');
+
+      client.add('hello');
     });
   });
 }
