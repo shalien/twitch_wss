@@ -21,13 +21,23 @@ final class TwitchMessage {
   final UnmodifiableListView<TwitchEmote>? emotes;
 
   /// [List] of the message emote sets.
-  final UnmodifiableListView<int>? emoteSets;
+  final UnmodifiableListView<dynamic>? emoteSets;
 
-  final TwitchSource? source;
-  final TwitchCommand? command;
+  final TwitchSource? _source;
+
+  String? get author => _source?.nick;
+
+  final TwitchCommand? _command;
+
+  String? get command => _command?.command;
+
+  String? get channel => _command?.channel;
+
   final String? params;
 
-  TwitchMessage._(this.source, this.command, this.params, this.tags,
+  String? get msgId => tags?['msg-id'];
+
+  TwitchMessage._(this._source, this._command, this.params, this.tags,
       this.badges, this.emotes, this.emoteSets);
 
   factory TwitchMessage.parse(String raw) {
@@ -53,7 +63,7 @@ final class TwitchMessage {
       StringBuffer commandBuffer = StringBuffer();
 
       // Check if the message has params.
-      while (!parts.first.startsWith(':')) {
+      while (parts.isNotEmpty && !parts.first.startsWith(':')) {
         commandBuffer.write('${parts.first} ');
         parts.removeAt(0);
       }
@@ -62,7 +72,7 @@ final class TwitchMessage {
         command = TwitchCommand.parse(commandBuffer.toString());
       }
 
-      params = parts.join(' ').trim().substring(1);
+      params = parts.isEmpty ? null : parts.join(' ').trim().substring(1);
     }
 
     return TwitchMessage._(source, command, params, tag?.tags, tag?.badges,
@@ -71,12 +81,12 @@ final class TwitchMessage {
 
   String toJson() {
     return jsonEncode({
-      'source': source,
-      'command': command,
+      'source': _source,
+      'command': _command,
       'params': params,
       'tags': tags,
-      'badges': badges?.map((e) => e.toJson()).toList(),
-      'emotes': emotes?.map((e) => e.toJosn()).toList(),
+      'badges': badges?.toList(),
+      'emotes': emotes?.toList(),
       'emoteSets': emoteSets,
     });
   }
@@ -98,10 +108,10 @@ final class _Tag {
   UnmodifiableListView<TwitchEmote>? get emotes =>
       _emotes == null ? null : UnmodifiableListView<TwitchEmote>(_emotes!);
 
-  List<int>? _emoteSets;
+  List<dynamic>? _emoteSets;
 
-  UnmodifiableListView<int>? get emoteSets =>
-      _emoteSets == null ? null : UnmodifiableListView<int>(_emoteSets!);
+  UnmodifiableListView<dynamic>? get emoteSets =>
+      _emoteSets == null ? null : UnmodifiableListView<dynamic>(_emoteSets!);
 
   _Tag._(this._tags, this._badges, this._emotes, this._emoteSets);
 
@@ -110,7 +120,7 @@ final class _Tag {
 
     List<TwitchBadge>? badges;
     List<TwitchEmote>? emotes;
-    List<int>? emoteSets;
+    List<dynamic>? emoteSets;
 
     List<String> splittedTags = raw.split(';');
     splittedTags.removeWhere((element) => _tagsToIgnore.contains(element));
@@ -143,10 +153,10 @@ final class _Tag {
 
           break;
         case 'emote-sets':
-          emoteSets ??= <int>[];
+          emoteSets ??= <dynamic>[];
 
           for (String emoteSet in parsedTag.last.split(',')) {
-            emoteSets.add(int.parse(emoteSet));
+            emoteSets.add(emoteSet);
           }
           break;
         default:

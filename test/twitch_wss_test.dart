@@ -10,8 +10,6 @@ void main() {
     test('First Test', () async {
       final client = await TwitchClient.create(
           'dickhead2', 'oauth:23my81iedcsmgz9rtvlgsw33ats141');
-
-      client.add('hello');
     });
   });
 }

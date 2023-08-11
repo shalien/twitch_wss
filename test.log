@@ -1,0 +1,62 @@
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=a0f1bd48-8747-4a9a-b5f5-8cabb56ea430;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+PING :tmi.twitch.tv
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=d92036d8-dba1-4ab4-9480-3cd8a383c3f1;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=f01778c4-3009-4f7e-a68c-52463e98192f;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=a3059b36-04c2-44e4-b3c0-0fcfad961ccf;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=2b73f333-8462-4838-8a2b-5f7ab4bb3720;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=11624935-6447-490f-a321-4396155f2487;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+PING :tmi.twitch.tv
+
+PING :tmi.twitch.tv
+

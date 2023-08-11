@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-const String join = 'join';
-const String part = 'part';
-const String notice = 'notice';
-const String clearChat = 'clearchat';
-const String hostTarget = 'hosttarget';
-const String privmsg = 'privmsg';
-const String ping = 'ping';
-const String cap = 'cap';
-const String gloablUserState = 'globaluserstate';
-const String roomState = 'roomstate';
-const String userNotice = 'usernotice';
-const String reconnect = 'reconnect';
+const String join = 'JOIN';
+const String part = 'PART';
+const String notice = 'NOTICE';
+const String clearChat = 'CLEARCHAT';
+const String hostTarget = 'HOSTTARGET';
+const String privmsg = 'PRIVMSG';
+const String ping = 'PING';
+const String cap = 'CAP';
+const String gloablUserState = 'GLOBALUSERSTATE';
+const String roomState = 'ROOMSTATE';
+const String userNotice = 'USERNOTICE';
+const String reconnect = 'RECONNECT';
 
 const String zeroZeroOne = '001';
 const String zeroZeroTwo = '002';
@@ -40,11 +40,12 @@ final class TwitchCommand {
     List<String> parts = raw.split(' ');
 
     if (parts.length == 1) {
-      return TwitchCommand._(parts.first, '', null);
+      return TwitchCommand._(parts.first.trim(), '', null);
     } else if (parts.length == 2) {
-      return TwitchCommand._(parts.first, parts[1], null);
+      return TwitchCommand._(parts.first.trim(), parts[1].trim(), null);
     } else {
-      return TwitchCommand._(parts.first, parts[1], parts.sublist(2).join(' '));
+      return TwitchCommand._(parts.first.trim(), parts[1].trim(),
+          parts.map((e) => e.trim()).toList().sublist(2).join(' '));
     }
   }
 
