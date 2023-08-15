@@ -1,13 +1,15 @@
-name: twitch_wss
+name: tmi_dart
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
-  sdk: ^3.0.6
+  sdk: ^3.0.6 
 
 # Add regular dependencies here.
 dependencies:
+  collection: ^1.18.0
+  http: ^1.1.0
   meta: ^1.9.1
   # path: ^1.8.0
 

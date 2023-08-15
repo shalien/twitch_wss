@@ -1,35 +1,55 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:twitch_wss/src/twitch_message.dart';
+import 'package:collection/collection.dart';
+import 'const/twitch_commands.dart';
 
-import 'twitch_command.dart';
+import 'channel.dart';
+import 'base/messages/message.dart';
+import 'raw/raw_message.dart';
+import 'base/user/user.dart';
 
 const String _baseUrl = 'wss://irc-ws.chat.twitch.tv:443';
 
-class TwitchClient extends Stream<TwitchMessage> {
-  late WebSocket _socket;
+class TwitchClient extends Stream<Message> {
+  /// Twitch Identity
+  User? _user;
 
-  final StreamController<TwitchMessage> _controller =
-      StreamController<TwitchMessage>.broadcast();
+  User? get user => _user;
 
-  Stream<TwitchMessage> get _internalStream => _controller.stream;
+  final Map<String, User> _identities = {};
+
+  /// Socket
+
+  WebSocket _socket;
+
+  final LineSplitter _splitter = LineSplitter();
+
+  /// Stream control
+
+  final StreamController<Message> _controller =
+      StreamController<Message>.broadcast();
+
+  Stream<Message> get _internalStream => _controller.stream;
+
+  /// Bot auth
 
   final String nick;
 
   final String _token;
 
-  final List<String> _channels = [];
+  /// Bot data
 
-  UnmodifiableListView<String> get channels => UnmodifiableListView(_channels);
+  final List<Channel> _channels = [];
 
-  TwitchClient._(this.nick, this._token, {List<String>? channels}) {
-    if (channels != null) {
-      _channels.addAll(channels);
-    }
-  }
+  /// Startup channels
+  final List<String> _startupChannels;
+
+  UnmodifiableListView<Channel> get channels => UnmodifiableListView(_channels);
+
+  TwitchClient._(this._socket, this.nick, this._token, {List<String>? channels})
+      : _startupChannels = channels ?? const [];
 
   bool _isConnected = false;
 
@@ -37,14 +57,26 @@ class TwitchClient extends Stream<TwitchMessage> {
 
   static Future<TwitchClient> create(String nick, String token,
       {List<String>? channels}) async {
-    TwitchClient instance = TwitchClient._(nick, token, channels: channels);
-    instance._socket = await WebSocket.connect(_baseUrl);
+    WebSocket socket;
 
-    instance._socket.listen(instance._handleData,
+    try {
+      socket = await WebSocket.connect(_baseUrl);
+    } catch (e) {
+      rethrow;
+    }
+
+    TwitchClient instance =
+        TwitchClient._(socket, nick, token, channels: channels);
+
+    /// Will split messages on new lines
+    instance._socket.transform(instance._splitter).listen(instance._handleData,
         onError: instance._handleError, onDone: instance._handleDone);
 
+    /// Requesting additionnal capabilities
     instance._socket.addUtf8Text(utf8.encode(
         'CAP REQ :twitch.tv/commands twitch.tv/membership twitch.tv/tags'));
+
+    /// Sending auth
     instance._socket.addUtf8Text(utf8.encode('PASS $token'));
     instance._socket.addUtf8Text(utf8.encode('NICK $nick'));
 
@@ -52,80 +84,58 @@ class TwitchClient extends Stream<TwitchMessage> {
   }
 
   void _handleData(dynamic data) {
-    File file = File('test.log');
-    if (!file.existsSync()) {
-      file.createSync();
+    String rawMessage = data is String ? data : utf8.decode(data);
+
+    /// Skipping empty messages
+    if (rawMessage.isEmpty) {
+      return;
     }
 
-    String raw = data is String ? data : utf8.decode(data);
+    /// Doing a first parsing to separate tags, source, command and params
+    var message = RawMessage.parse(rawMessage);
 
-    List<String> rawMessages = raw.split('\r\n');
+    /// Commands are always in uppercase so to avoid unnecessary transformations we are comparing uppercase values
+    switch (message.command) {
+      case globalUserState:
+        User newUser = User.fromMap(this, message.tags);
 
-    for (var rawMessage in rawMessages) {
-      file.writeAsStringSync('$rawMessage\r\n', mode: FileMode.append);
+        _user = newUser;
+        break;
+      case join:
+        break;
+      case notice:
+        print(rawMessage);
+        break;
+      case part:
+        break;
+      case ping:
+        _socket.addUtf8Text(utf8.encode('PONG :tmi.twitch.tv'));
+        break;
+      case privmsg:
+        break;
 
-      if (rawMessage.isEmpty) {
-        continue;
-      }
+      case threeFiveThree:
+        break;
+      case threeSevenSix:
+        _isConnected = true;
 
-      var message = TwitchMessage.parse(rawMessage);
+        for (var channel in _startupChannels) {
+          joinChannel(channel);
+        }
 
-      print(rawMessage);
-      print(message.toJson());
+        break;
 
-      switch (message.command?.toLowerCase()) {
-        case cap:
-          break;
-        case join:
-          _controller.add(message);
-          break;
-        case notice:
-          switch (message.msgId) {
-            case 'msg_ratelimit':
-              close();
-              throw Exception('Rate limit exceeded');
-          }
+      case zeroZeroOne:
+      case zeroZeroTwo:
+      case zeroZeroThree:
+      case zeroZeroFour:
+      case threeSevenFive:
+      case threeSevenTwo:
+        break;
 
-          print(message.msgId);
-
-          if (message.params?.contains('Improperly formatted auth') ?? false) {
-            _socket.close();
-
-            throw Exception('Login authentication failed with user $nick');
-          } else if (message.params?.contains('Login authentication failed') ??
-              false) {
-            _socket.close();
-
-            throw Exception('Login authentication failed with user $nick');
-          } else {
-            print(rawMessage);
-          }
-
-          break;
-        case part:
-          break;
-        case ping:
-          _socket.addUtf8Text(utf8.encode('PONG :tmi.twitch.tv'));
-          break;
-        case privmsg:
-          _controller.add(message);
-          break;
-        case threeSevenSix:
-          _isConnected = true;
-
-          for (var channel in _channels) {
-            channel = channel.startsWith('#') ? channel : '#$channel';
-
-            _socket.addUtf8Text(utf8.encode('JOIN $channel'));
-          }
-
-          _controller.add(message);
-          break;
-
-        default:
-          _controller.add(message);
-          break;
-      }
+      default:
+        print('Unknown command ${message.command} :  $rawMessage');
+        break;
     }
   }
 
@@ -153,18 +163,33 @@ class TwitchClient extends Stream<TwitchMessage> {
     _socket.addUtf8Text(utf8Message);
   }
 
-  void quit(String channel) {
+  void sendWhisper(String displayName, String message) {
+    List<int> utf8Message = utf8.encode('PRIVMSG #$displayName :$message');
+
+    _socket.addUtf8Text(utf8Message);
+  }
+
+  void joinChannel(String channel) {
     channel = channel.startsWith('#') ? channel : '#$channel';
 
-    _socket.addUtf8Text(utf8.encode('PART #$channel'));
+    _socket.addUtf8Text(utf8.encode('JOIN $channel'));
+  }
+
+  void partChannel(String channel) {
+    Channel? newChannel =
+        _channels.firstWhereOrNull((element) => element.name == channel);
+
+    if (newChannel != null) {
+      _channels.remove(newChannel);
+      newChannel.partChannel();
+    } else {
+      _controller.addError('Not in channel #$channel');
+    }
   }
 
   @override
-  StreamSubscription<TwitchMessage> listen(
-      void Function(TwitchMessage event)? onData,
-      {Function? onError,
-      void Function()? onDone,
-      bool? cancelOnError}) {
+  StreamSubscription<Message> listen(void Function(Message event)? onData,
+      {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     return _internalStream.listen(onData,
         onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }

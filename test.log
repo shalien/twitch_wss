@@ -60,3 +60,222 @@ PING :tmi.twitch.tv
 
 PING :tmi.twitch.tv
 
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=f89c94b8-f04e-480b-88a1-1746a2f03ce6;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+@badge-info=;badges=broadcaster/1,premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;id=95e75f3b-7848-4cbd-ba79-7694fd583e09;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #shalien
+
+PING :tmi.twitch.tv
+
+PING :tmi.twitch.tv
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #saltybet
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :shalien
+:shalien.tmi.twitch.tv 366 shalien #saltybet :End of /NAMES list
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #saltybet
+@emote-only=0;followers-only=10080;r9k=0;room-id=43201452;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #saltybet
+
+@badge-info=subscriber/1;badges=subscriber/0,premium/1;client-nonce=c81b7ef8fbeb2ffdc29d84c02b395752;color=;display-name=theneridad;emotes=;first-msg=0;flags=;id=d024bf2c-bc99-4390-9aed-63a8a099a222;mod=0;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691787749217;turbo=0;user-id=470446752;user-type= :theneridad!theneridad@theneridad.tmi.twitch.tv PRIVMSG #saltybet :I thought Fighting Vipers came first. Wasn't that the one with Honey?
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #saltybet
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #saltybet
+@emote-only=0;followers-only=10080;r9k=0;room-id=43201452;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #saltybet
+
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :boscostl eternal_lucius fraxian gunnermanbill mikedabiike purplecityxd troubleappreciatesyou vanillaparfait wargames 7zealot elysian evacaneer moobot tintingaisongfetcher titanoktonon arcvale fajosu incrediblelaser phenomelul tkd_prodigy75 heavyvulcan kof_toast ss4_link acytro dedbolt henhenz21 nocypher saltbot ttvt3chet djsama3 dockyperky macho_ project_hasu yummicola elblvcksage meseito craterade itsvodoo nickyfgc
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :rabbidpico boney_mnm moneyoverall remydwd sharpsilvers aodplays cynasis kitsunebot ophiplay rmenchik savvoi_ themasuke aryatremayne funderwood xxkusaixx ayannapls calmer_ drapsnatt hodgepodge96 kennykravitz trohnics zeabots llcooljoke lokasocba skrikch that1squidd zerocontrast blackjack760 huntsstuff madrigos phoenix_omega pr0phet_of_fear thespian36 kakashinwp legendary_yakuza nxtspace broli0_0 dvvble f_ez strunkjuice
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :treyvone____wolfe chubbydbd eviltanatos hakujuu jarsix tomatoco 01ella bluichu darkphoenix44 imaizumi kranesh lorddankspank mclamabot pinknoodlehair tooki97294 aes_tw basecode blackmagezero guy_9997 rannax89 tossapon araji darakuji happyrat hiro_le_weeb simmons572 starslam204 alastorcreed braxnond fuyuzakura__ grarg12345 ahahahahhhhahahahahah blinkers16 cab24 compaioncube saltyswegs samskio squuuidly thekinghasnoname kattah
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :mastersimper pow_powbro synsyrr omega_wario_98kofm pliiiskin samsaphone xareonvulkanen zasninja all_miles commanderroot gibinba harmlesspastime imjamaun machomrnacho morgane2k7 8hvdes blueraven84 enbii enochrewt fishyyyy_ paranoidhero still_frame inuyasha8929 jimbyslice link_highwind srickshaw u4rion bootysweat911 bxrolox fixedentropy nitro694 noreply8453 omally rielynvt 21insects ahostile chatandbusiness nixpayn
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :static_toast magaverage steezyphresh thejoe2o tpjek benjumanjibrah ichtuscore lotsofblue mr_bedouin 10egg_ aliceydra bullyarugal fart_bath kityyyyyy thefullwall thisisnotjake twilightpb bejayyyy gamerk91 interstellarcow kittycannoli leguizzy magicdeathcooties meekibriks professorpunching rad_hazard sirvesa discord4small_streamers houseoftolstoy illusive_info manguy15 specktactics thoril21 indyadvant omegacasual bos3oud112
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :lemurman001 mrpinusmonticola rockiestart waifu4u blackheart_zero corecreativity deviwird double_mew kayecks moito8 sirjarvis_ jkookieq last_hope_hotline saintpurr surf_and_destroy theneridad ctarcius lalarludo penaltypermit scythe79 spongeboy2010 hajdouken swankierflea vixol guiltykarma jyrolinn marco23p neonidas_noll bffdanny bloodwing_187 devjimmyboy fiskib0t itzjaylock kitgene lestaroth optimalvampire zero0mega
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :diomfbrando fireblade212 kingjazzbo soundsync5000 exkirby jdude0822 majorllama66 moonbase10 gillymomo jappito kaitheoniguy mr_squish thertistguy tntxyz jovquibble quitedoody skinjacket_gs thekittenjedi whocares042 binbaguk birdbastard praxideki rob_velocity audiopool89 eatpizza247 gamepal killkrave maxwell3094 ninetime praisethesun20 sejinaldo shadebane unkojin xbc30ep450 chris_cam99 jozenchozen kleptomike
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :smallstreamersdiscord_ ayohee_aria briskhalfnhalf digitalelix3r eviljmcnasty lainp7 lookbeneathyou metalstuff nobannerflags preeeemo rocknroader stevenhv93kl xwintersonata dino_nuggies_r_cool ellekanza fatdoornation frostmog mikew579 tweetusfetus xx169 zarkenna_ buzz_clik naturalstatic reachk6 dwskillton fried_rices kvskenny rccrisp rogueg1rl saxtonhale therare_panda trashsommelier cadavamatic nopetoofast zoidberg_md_
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :abzscrab failprime gatore__ irl_anime_girl sunday_hero aeonix__ fozzyburr freyrfox internationalmienshaocafe kisyxo ktlynn17 taxidave ekoa1000 gauronzz vilhaven elliote gillettejohn lisabadcat orderborder razorbaneog veracsfail will_shn gendal_ hakad_ muhshuhu nightbot notmeliodas2 riftgenerator wegr0o
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :shalien
+:shalien.tmi.twitch.tv 366 shalien #saltybet :End of /NAMES list
+
+@badge-info=;badges=;color=#DAA520;display-name=chatandbusiness;emotes=;first-msg=0;flags=;id=380334ce-fa18-4dcd-b13b-e3f89b6ed344;mod=0;returning-chatter=0;room-id=43201452;subscriber=0;tmi-sent-ts=1691788103141;turbo=0;user-id=91711631;user-type= :chatandbusiness!chatandbusiness@chatandbusiness.tmi.twitch.tv PRIVMSG #saltybet :Hornet – Hornet is a car (number 41) from Daytona USA,[
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #saltybet
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #saltybet
+@emote-only=0;followers-only=10080;r9k=0;room-id=43201452;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #saltybet
+
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :sirvesa thisisnotjake fried_rices saxtonhale metalstuff rbadbone69 synsyrr tkd_prodigy75 ttvt3chet xx169 legendary_yakuza lemurman001 lestaroth macho_ rocknroader fireblade212 huntsstuff omega_wario_98kofm ophiplay phoenix_omega rogueg1rl saintpurr bootysweat911 inuyasha8929 nopetoofast waifu4u imjamaun magaverage eatpizza247 hajdouken harmlesspastime kittycannoli nocypher tweetusfetus braxnond diomfbrando xbc30ep450 elliote
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :jappito lotsofblue mrtrojis saltbot samsaphone ahahahahhhhahahahahah calmer_ zarkenna_ omegacasual discord4small_streamers incrediblelaser ekoa1000 notmeliodas2 blueraven84 buzz_clik aryatremayne majorllama66 moito8 titanoktonon wargames heavyvulcan illusive_info ctarcius kitsunebot kranesh remydwd yummicola bxrolox commanderroot xxkusaixx irl_anime_girl lorddankspank itzjaylock optimalvampire stevenhv93kl boscostl broli0_0
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :squuuidly veracsfail 21insects houseoftolstoy rannax89 rielynvt thekinghasnoname 8hvdes moobot twilightpb lookbeneathyou swankierflea meekibriks reachk6 kityyyyyy project_hasu thefullwall xareonvulkanen elysian kitgene neonidas_noll nxtspace praisethesun20 tntxyz cab24 kisyxo gatore__ nitro694 savvoi_ themasuke thertistguy thespian36 7zealot digitalelix3r eviltanatos fatdoornation quitedoody steezyphresh darkphoenix44
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :dedbolt pliiiskin rockiestart sejinaldo theneridad vixol dvvble gamerk91 pinknoodlehair skinjacket_gs strunkjuice bullyarugal gunnermanbill imaizumi kakashinwp fuyuzakura__ hiro_le_weeb jyrolinn naturalstatic soundsync5000 chubbydbd fiskib0t guy_9997 professorpunching razorbaneog dockyperky gendal_ frostmog gibinba killkrave praxideki skrikch thejoe2o all_miles enochrewt zeabots zero0mega drapsnatt whocares042 lalarludo
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :link_highwind evacaneer hakujuu ktlynn17 maxwell3094 audiopool89 dino_nuggies_r_cool devjimmyboy enbii jimbyslice static_toast xwintersonata aeonix__ deviwird kvskenny magicdeathcooties mrpinusmonticola craterade kattah lokasocba rmenchik srickshaw fishyyyy_ funderwood jozenchozen penaltypermit sunday_hero tomatoco will_shn spongeboy2010 ss4_link smallstreamersdiscord_ tooki97294 zoidberg_md_ acytro phenomelul f_ez
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :still_frame blackjack760 dwskillton jkookieq mastersimper mr_squish thekittenjedi bffdanny fart_bath gillymomo moonbase10 morgane2k7 riftgenerator blinkers16 failprime ichtuscore mclamabot corecreativity hodgepodge96 cadavamatic internationalmienshaocafe kleptomike rccrisp bejayyyy birdbastard gillettejohn guiltykarma lainp7 blackheart_zero fraxian fixedentropy hakad_ kennykravitz llcooljoke starslam204 taxidave darakuji
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :elblvcksage nightbot nixpayn saltyswegs therare_panda tintingaisongfetcher ayohee_aria fozzyburr boney_mnm ellekanza marco23p mr_bedouin rad_hazard aliceydra aodplays indyadvant nobannerflags tossapon chatandbusiness freyrfox machomrnacho that1squidd kaitheoniguy kayecks purplecityxd rabbidpico shadebane blackmagezero briskhalfnhalf eternal_lucius kof_toast ninetime treyvone____wolfe wegr0o binbaguk bloodwing_187 sirjarvis_
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :gauronzz rob_velocity u4rion cynasis mikew579 paranoidhero samskio trohnics madrigos muhshuhu gamepal thoril21 jarsix last_hope_hotline alastorcreed bluichu specktactics tpjek bos3oud112 happyrat jovquibble orderborder pr0phet_of_fear scythe79 10egg_ araji eviljmcnasty itsvodoo leguizzy manguy15 troubleappreciatesyou arcvale djsama3 preeeemo abzscrab chris_cam99 compaioncube exkirby nickyfgc 01ella ayannapls jdude0822
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :kingjazzbo meseito moneyoverall omally zerocontrast ahostile henhenz21 interstellarcow unkojin simmons572 vilhaven grarg12345 sharpsilvers benjumanjibrah double_mew fajosu lisabadcat noreply8453 pow_powbro aes_tw basecode trashsommelier zasninja
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :shalien
+:shalien.tmi.twitch.tv 366 shalien #saltybet :End of /NAMES list
+
+@badge-info=subscriber/8;badges=subscriber/6,premium/1;color=#0000FF;display-name=MrTrojis;emotes=;first-msg=0;flags=;id=1a7ad5c2-0606-4197-8c05-67a4424a5c6f;mod=0;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691788212278;turbo=0;user-id=46389018;user-type= :mrtrojis!mrtrojis@mrtrojis.tmi.twitch.tv PRIVMSG #saltybet :HOOEY
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #saltybet
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #saltybet
+@emote-only=0;followers-only=10080;r9k=0;room-id=43201452;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #saltybet
+
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :blackmagezero briskhalfnhalf dockyperky static_toast still_frame 7zealot bffdanny project_hasu killkrave ninetime omegacasual steezyphresh taxidave ahostile calmer_ diomfbrando tossapon orderborder shalien bloodwing_187 ekoa1000 moobot huntsstuff purplecityxd enochrewt eviljmcnasty gillymomo savvoi_ broli0_0 lalarludo last_hope_hotline tooki97294 dbala_ lokasocba spongeboy2010 01ella kingvulk kityyyyyy moonbase10 nxtspace
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :rabbidpico smallstreamersdiscord_ synsyrr 21insects fiskib0t jyrolinn all_miles buzz_clik digitalelix3r compaioncube machomrnacho srickshaw hakad_ leguizzy zero0mega waifu4u alastorcreed lestaroth skrikch xx169 blueraven84 muhshuhu tkd_prodigy75 commanderroot double_mew zasninja ahahahahhhhahahahahah boscostl bxrolox paranoidhero fajosu frostmog naturalstatic illusive_info imaizumi tntxyz birdbastard dvvble hajdouken
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :mrpinusmonticola rocknroader unkojin gauronzz jarsix ktlynn17 kayecks dino_nuggies_r_cool fuyuzakura__ kakashinwp gillettejohn madrigos simmons572 interstellarcow nitro694 vilhaven fried_rices incrediblelaser indyadvant hodgepodge96 shadebane specktactics audiopool89 benjumanjibrah darakuji nightbot phenomelul themasuke cab24 ctarcius darkphoenix44 macho_ thefullwall tpjek vixol bluichu gamepal irl_anime_girl jkookieq
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :mclamabot abzscrab boney_mnm gunnermanbill mr_bedouin preeeemo starslam204 that1squidd bootysweat911 djsama3 maxwell3094 lotsofblue majorllama66 pinknoodlehair reachk6 sharpsilvers devjimmyboy discord4small_streamers link_highwind sirjarvis_ wargames saltbot tweetusfetus xxkusaixx araji happyrat lemurman001 chubbydbd kvskenny thejoe2o stevenhv93kl thespian36 treyvone____wolfe harmlesspastime phoenix_omega rmenchik nixpayn
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :trashsommelier whocares042 chatandbusiness evacaneer morgane2k7 samsaphone chris_cam99 fixedentropy llcooljoke craterade penaltypermit nickyfgc rob_velocity scythe79 swankierflea zarkenna_ blackheart_zero kittycannoli magaverage tomatoco ellekanza rogueg1rl strunkjuice pr0phet_of_fear saltyswegs veracsfail notmeliodas2 omally pliiiskin metalstuff moneyoverall quitedoody samskio yummicola ayannapls basecode loafthedankengine
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :praxideki xwintersonata marco23p nocypher xareonvulkanen elliote exkirby kof_toast pow_powbro squuuidly fraxian henhenz21 hiro_le_weeb neonidas_noll braxnond eviltanatos fatdoornation inuyasha8929 itzjaylock jozenchozen praisethesun20 f_ez fozzyburr internationalmienshaocafe legendary_yakuza manguy15 optimalvampire trohnics aliceydra derbeekus kitsunebot kennykravitz kingjazzbo acytro elblvcksage funderwood blinkers16
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :noreply8453 guy_9997 heavyvulcan kaitheoniguy kitgene dwskillton fishyyyy_ gibinba meseito omega_wario_98kofm zoidberg_md_ bos3oud112 houseoftolstoy jappito kisyxo lorddankspank mikew579 rbadbone69 thisisnotjake gendal_ grarg12345 itsvodoo titanoktonon troubleappreciatesyou fireblade212 ophiplay rielynvt jovquibble magicdeathcooties riftgenerator jdude0822 mastersimper mrtrojis thekittenjedi u4rion aes_tw aryatremayne
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :drapsnatt lookbeneathyou saintpurr corecreativity cynasis deviwird moito8 xbc30ep450 aeonix__ binbaguk bullyarugal razorbaneog remydwd ss4_link thoril21 will_shn aodplays meekibriks mr_squish elysian freyrfox gamerk91 kattah lainp7 arcvale ayohee_aria dedbolt nobannerflags theneridad wegr0o zerocontrast kleptomike thertistguy ttvt3chet lisabadcat rannax89 sejinaldo therare_panda blackjack760 cadavamatic enbii guiltykarma
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :professorpunching twilightpb eternal_lucius fart_bath gatore__ imjamaun saxtonhale thekinghasnoname 8hvdes bejayyyy ichtuscore rad_hazard sirvesa skinjacket_gs soundsync5000 sunday_hero eatpizza247 kranesh nopetoofast zeabots rccrisp rockiestart tintingaisongfetcher 10egg_ failprime hakujuu
+:shalien.tmi.twitch.tv 366 shalien #saltybet :End of /NAMES list
+
+@badge-info=subscriber/27;badges=subscriber/24;client-nonce=1d907ff4a21cb766cbe2e507864b373c;color=#FF0000;display-name=professorpunching;emotes=;first-msg=0;flags=;id=8be3304f-5a30-455a-ad0d-c48ab2c11c23;mod=0;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691788270020;turbo=0;user-id=142325682;user-type= :professorpunching!professorpunching@professorpunching.tmi.twitch.tv PRIVMSG #saltybet :You think the dog is just going to let them?
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #saltybet
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #saltybet
+@emote-only=0;followers-only=10080;r9k=0;room-id=43201452;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #saltybet
+
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :bluichu lookbeneathyou m0rn1ngbell maxwell3094 purplecityxd sirjarvis_ whoishass bootysweat911 derbeekus joe11003 kranesh lorddankspank saintpurr swankierflea gillymomo hiro_le_weeb illusive_info praxideki broli0_0 carcrash_101 hakujuu kingvulk samskio saxtonhale sejinaldo steezyphresh toyosatomimino_miko arcvale blinkers16 inuyasha8929 ss4_link thekinghasnoname tooki97294 tossapon drapsnatt fraxian ktlynn17 exkirby
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :fuyuzakura__ riftgenerator sirvesa ekoa1000 orderborder rabbidpico synsyrr fried_rices happyrat meseito moobot phenomelul trashsommelier zerocontrast fajosu harmlesspastime itzjaylock lalarludo penaltypermit phoenix_omega thejoe2o will_shn bffdanny ichtuscore imjamaun kaitheoniguy kvskenny tkd_prodigy75 bloodwing_187 birdbastard nobannerflags rielynvt eviljmcnasty lemurman001 rob_velocity marco23p muhshuhu nightbot
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :still_frame titanoktonon enochrewt fart_bath kitsunebot kittycannoli thoril21 deviwird specktactics aes_tw blueraven84 fishyyyy_ rmenchik thekittenjedi themasuke braxnond cab24 jappito razorbaneog tpjek 10egg_ audiopool89 indyadvant kof_toast last_hope_hotline optimalvampire pr0phet_of_fear quetzal_qwq elysian manguy15 ophiplay vixol araji nocypher omega_wario_98kofm twilightpb aryatremayne compaioncube incrediblelaser
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :legendary_yakuza nitro694 rockiestart therare_panda bullyarugal lotsofblue static_toast steezydan77 ttvt3chet bos3oud112 cadavamatic darkphoenix44 enbii metalstuff praisethesun20 savvoi_ strunkjuice fatdoornation skinjacket_gs tomatoco treyvone____wolfe craterade jdude0822 moneyoverall nickyfgc remydwd thisisnotjake sunday_hero fireblade212 grarg12345 guiltykarma kitgene kityyyyyy magaverage shadebane thespian36 xx169
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :yummicola benjumanjibrah boney_mnm mon1tor rad_hazard rccrisp zarkenna_ 01ella calamarispice itsvodoo zoidberg_md_ 8hvdes acytro calmer_ corecreativity gauronzz saltbot starslam204 bejayyyy evacaneer neonidas_noll rbadbone69 alastorcreed aodplays elblvcksage imaizumi skrikch darakuji hadron_92 leguizzy pinknoodlehair u4rion blackmagezero gamerk91 kattah majorllama66 mr_bedouin thefullwall 7zealot blackheart_zero frostmog
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :irl_anime_girl jarsix kisyxo mikew579 nixpayn soundsync5000 stevenhv93kl buzz_clik loafthedankengine mrpinusmonticola quitedoody xwintersonata zasninja fixedentropy link_highwind nxtspace jyrolinn machomrnacho omally that1squidd wargames dvvble gamepal hodgepodge96 jovquibble commanderroot fozzyburr gunnermanbill tweetusfetus theballocaust veracsfail dockyperky eatpizza247 elliote 21insects abzscrab ayohee_aria mr_squish
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :nopetoofast simmons572 ahostile briskhalfnhalf eternal_lucius gatore__ kakashinwp magicdeathcooties xbc30ep450 discord4small_streamers ellekanza moito8 omegacasual spongeboy2010 squuuidly zakel_archange_of_justice zero0mega basecode diomfbrando djsama3 internationalmienshaocafe lokasocba mclamabot scythe79 unkojin xxkusaixx macho_ tntxyz fiskib0t gibinba ninetime srickshaw zeabots aliceydra calamity_cookie maaelynx madrigos
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :noreply8453 pliiiskin project_hasu chris_cam99 huntsstuff meekibriks naturalstatic whocares042 boscostl bxrolox professorpunching waifu4u dbala_ guy_9997 reachk6 binbaguk double_mew failprime henhenz21 houseoftolstoy lisabadcat morgane2k7 mrtrojis troubleappreciatesyou chatandbusiness dwskillton notmeliodas2 samsaphone theneridad all_miles cynasis heavyvulcan saltyswegs sharpsilvers funderwood gillettejohn lainp7 lestaroth
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :rogueg1rl smallstreamersdiscord_ tintingaisongfetcher aeonix__ chubbydbd interstellarcow killkrave kleptomike freyrfox mastersimper thertistguy trohnics ahahahahhhhahahahahah eviltanatos f_ez gendal_ kingjazzbo wegr0o xareonvulkanen ayannapls devjimmyboy jozenchozen llcooljoke
+:shalien.tmi.twitch.tv 353 shalien = #saltybet :shalien
+:shalien.tmi.twitch.tv 366 shalien #saltybet :End of /NAMES list
+
+@badge-info=subscriber/1;badges=subscriber/0,premium/1;client-nonce=b91a71bef5015a8b8cc9da0e7b7ebf75;color=;display-name=theneridad;emotes=;first-msg=0;flags=;id=f6bf1517-8433-47e1-8e53-6d41465c1517;mod=0;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691788647707;turbo=0;user-id=470446752;user-type= :theneridad!theneridad@theneridad.tmi.twitch.tv PRIVMSG #saltybet :And you can play Snake on it
+
+@badge-info=subscriber/83;badges=moderator/1,subscriber/78;color=#FF009D;display-name=WAIFU4u;emotes=;first-msg=0;flags=;id=2c221778-c056-48a6-bfea-d2e0715b7763;mod=1;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691788648543;turbo=0;user-id=55853880;user-type=mod :waifu4u!waifu4u@waifu4u.tmi.twitch.tv PRIVMSG #saltybet :Bets are locked. Nokia 3310 (-1) - $2,564,138, Nick commando EX (1) - $2,453,327
+
+@badge-info=subscriber/11;badges=subscriber/9,premium/1;client-nonce=b01012e5d8b1593638fbaeec9de98bb4;color=;display-name=Theballocaust;emotes=;first-msg=0;flags=;id=ed8d0bba-c15a-420e-adf8-eaa4f82ce7c9;mod=0;returning-chatter=0;room-id=43201452;subscriber=1;tmi-sent-ts=1691788674974;turbo=0;user-id=47233186;user-type= :theballocaust!theballocaust@theballocaust.tmi.twitch.tv PRIVMSG #saltybet :make and receive cellular phone calls with Boost Mobile
+
+:tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/membership twitch.tv/tags
+
+:tmi.twitch.tv 001 shalien :Welcome, GLHF!
+:tmi.twitch.tv 002 shalien :Your host is tmi.twitch.tv
+:tmi.twitch.tv 003 shalien :This server is rather new
+:tmi.twitch.tv 004 shalien :-
+:tmi.twitch.tv 375 shalien :-
+:tmi.twitch.tv 372 shalien :You are in a maze of twisty passages, all alike.
+:tmi.twitch.tv 376 shalien :>
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276;user-id=40038926;user-type= :tmi.twitch.tv GLOBALUSERSTATE
+
+:shalien!shalien@shalien.tmi.twitch.tv JOIN #roiours
+:shalien.tmi.twitch.tv 353 shalien = #roiours :shalien
+:shalien.tmi.twitch.tv 366 shalien #roiours :End of /NAMES list
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276,b9f40c5f-d7e8-4028-bea8-c6e48a403bdc;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #roiours
+@emote-only=0;followers-only=-1;r9k=0;room-id=86443500;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #roiours
+
+@badge-info=;badges=premium/1;color=#FF0000;display-name=Shalien;emote-sets=0,19194,300374282,472873131,477339272,610186276,b9f40c5f-d7e8-4028-bea8-c6e48a403bdc;id=4d5a059d-03b4-4ea8-a412-5634bcb01cbf;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #roiours
+
+@badge-info=founder/6;badges=moderator/1,founder/0;client-nonce=7fbc5f10b3eca32c17a29daaf66e2f31;color=#8A2BE2;display-name=Arachnos;emotes=;first-msg=0;flags=26-30:A.3;id=e184ffa4-883f-4b04-b734-af49156d2964;mod=1;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940208957;turbo=0;user-id=27544789;user-type=mod :arachnos!arachnos@arachnos.tmi.twitch.tv PRIVMSG #roiours :C'est prenant ces petites bêtes là
+
+:drapsnatt!drapsnatt@drapsnatt.tmi.twitch.tv JOIN #roiours
+:kattah!kattah@kattah.tmi.twitch.tv JOIN #roiours
+:roiours!roiours@roiours.tmi.twitch.tv JOIN #roiours
+:rondorallen!rondorallen@rondorallen.tmi.twitch.tv JOIN #roiours
+:streamelements!streamelements@streamelements.tmi.twitch.tv JOIN #roiours
+:01ella!01ella@01ella.tmi.twitch.tv JOIN #roiours
+:aliceydra!aliceydra@aliceydra.tmi.twitch.tv JOIN #roiours
+:commanderroot!commanderroot@commanderroot.tmi.twitch.tv JOIN #roiours
+
+:arachnos!arachnos@arachnos.tmi.twitch.tv JOIN #roiours
+:kattah!kattah@kattah.tmi.twitch.tv PART #roiours
+
+@badge-info=subscriber/2;badges=subscriber/0,premium/1;client-nonce=4e2ab27d22ac9631a7be58fc41257ef8;color=#FF0000;display-name=Shalien;emotes=;first-msg=0;flags=;id=6023a62a-37a5-45bb-9689-5d9eea09a102;mod=0;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940452031;turbo=0;user-id=40038926;user-type= :shalien!shalien@shalien.tmi.twitch.tv PRIVMSG #roiours :Est ce que. ca devrait etre plutot Elden ring qui prend son pied sur toi ?
+
+PING :tmi.twitch.tv
+
+@badge-info=subscriber/2;badges=subscriber/0,premium/1;client-nonce=bd40ed9404c259b16763c2972bdc873f;color=#FF0000;display-name=Shalien;emotes=;first-msg=0;flags=;id=6b22a6ef-e2f5-4890-99f8-e571e6060ef0;mod=0;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940485949;turbo=0;user-id=40038926;user-type= :shalien!shalien@shalien.tmi.twitch.tv PRIVMSG #roiours :C'etait lancé via ma code mais ecrit pour le lancé
+
+@badge-info=subscriber/2;badges=subscriber/0,premium/1;client-nonce=f4503d592ba835518415335d84898216;color=#FF0000;display-name=Shalien;emotes=;first-msg=0;flags=;id=d9142816-a3af-4dab-a9c5-91d019537def;mod=0;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940495562;turbo=0;user-id=40038926;user-type= :shalien!shalien@shalien.tmi.twitch.tv PRIVMSG #roiours :J'ai pas encore finie la bibliothrque
+
+@badge-info=subscriber/2;badges=subscriber/0,premium/1;client-nonce=cbf3dbf1f1a8a7535c20b6bb8d519737;color=#FF0000;display-name=Shalien;emotes=;first-msg=0;flags=;id=8a6b12e3-d162-4996-b707-552c0a153c5e;mod=0;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940513752;turbo=0;user-id=40038926;user-type= :shalien!shalien@shalien.tmi.twitch.tv PRIVMSG #roiours :bah cest client.sendMessage('roiours', 'message');
+
+@badge-info=subscriber/2;badges=subscriber/0,premium/1;client-nonce=19c451ae9c46dfb156decdcb83925e48;color=#FF0000;display-name=Shalien;emotes=443:5-6;first-msg=0;flags=;id=f11cf3a1-8a61-4d1e-808d-684bc8473f44;mod=0;returning-chatter=0;room-id=86443500;subscriber=1;tmi-sent-ts=1691940528048;turbo=0;user-id=40038926;user-type= :shalien!shalien@shalien.tmi.twitch.tv PRIVMSG #roiours :DART :D
