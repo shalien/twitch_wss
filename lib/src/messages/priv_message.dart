@@ -1,13 +1,15 @@
-import 'package:meta/meta.dart';
-import '../base/messages/emote_message.dart';
+import 'dart:collection';
 
+import 'package:meta/meta.dart';
 import '../base/emote.dart';
-import '../base/user/message_user.dart';
-import '../const/twitch_commands.dart';
+import '../base/messages/message.dart';
+import '../raw/irc_message.dart';
+
+import '../mixin/has_emote.dart';
 
 /// The Twitch IRC server sends this message after a user posts a message to the chat room.
 @immutable
-final class PrivMessage extends EmoteMessage {
+final class PrivMessage extends Message with hasEmote {
   /// Message id
   final String id;
 
@@ -76,58 +78,38 @@ final class PrivMessage extends EmoteMessage {
   /// The ID of the room the message was sent to.
   final int roomId;
 
-  /// The Twitch IRC server sends this message after a user posts a message to the chat room.
-  const PrivMessage._(
-    this._pinnedChatIsPaidSystemMessage,
-    this.pinnedChatPaidAmount,
-    this.pinnedChatPaidCurrency,
-    this.pinnedChatPaidExponent,
-    this.pinnedChatPaidLevel,
-    this.replyParentMessageId,
-    this.replyParentUserLogin,
-    this.replyParentDisplayName,
-    this.replyParentMessageBody,
-    this.replyThreadParentMessageId,
-    this.replyThreadParentUserLogin, {
-    required super.user,
-    required this.id,
-    required super.content,
-    required this.tmiSentTs,
-    required this.roomId,
-    required super.channel,
-    required super.emotes,
-  }) : super(command: privmsg);
+  final List<Emote> _emotes;
+
+  /// The emotes that were used in this message.
+  UnmodifiableListView get emotes => UnmodifiableListView(_emotes);
 
   /// The Twitch IRC server sends this message after a user posts a message to the chat room.
-  factory PrivMessage.fromMap(
-      {required MessageUser user,
-      required String channel,
-      required String content,
-      required Map<String, dynamic> map}) {
-    return PrivMessage._(
-      map['pinnedChatIsPaidSystemMessage'] as int?,
-      map['pinnedChatPaidAmount'] as int?,
-      map['pinnedChatPaidCurrency'] as String?,
-      map['pinnedChatPaidExponent'] as int?,
-      map['pinnedChatPaidLevel'] as String?,
-      map['replyParentMessageId'] as String?,
-      map['replyParentUserLogin'] as String?,
-      map['replyParentDisplayName'] as String?,
-      map['replyParentMessageBody'] as String?,
-      map['replyThreadParentMessageId'] as String?,
-      map['replyThreadParentUserLogin'] as String?,
-      user: user,
-      id: map['id'] as String,
-      content: content,
-      tmiSentTs: map['tmiSentTs'] as int,
-      roomId: map['roomId'] as int,
-      emotes: map['emotes'] == null
-          ? <Emote>[]
-          : (map['emotes'] as String)
-              .split(',')
-              .map((e) => Emote.fromRawString(e))
-              .toList(),
-      channel: channel,
-    );
-  }
+  PrivMessage.parseIRC(IRCMessage ircMessage)
+      : id = ircMessage.tags['id'] as String,
+        pinnedChatPaidAmount =
+            ircMessage.tags['pinned-chat-paid-amount'] as int?,
+        pinnedChatPaidCurrency =
+            ircMessage.tags['pinned-chat-paid-currency'] as String?,
+        pinnedChatPaidExponent =
+            ircMessage.tags['pinned-chat-paid-exponent'] as int?,
+        pinnedChatPaidLevel =
+            ircMessage.tags['pinned-chat-paid-level'] as String?,
+        _pinnedChatIsPaidSystemMessage =
+            ircMessage.tags['pinned-chat-is-paid-system-message'] as int?,
+        replyParentMessageId =
+            ircMessage.tags['reply-parent-msg-id'] as String?,
+        replyParentUserLogin =
+            ircMessage.tags['reply-parent-user-login'] as String?,
+        replyParentDisplayName =
+            ircMessage.tags['reply-parent-display-name'] as String?,
+        replyParentMessageBody =
+            ircMessage.tags['reply-parent-msg-body'] as String?,
+        replyThreadParentMessageId =
+            ircMessage.tags['reply-thread-parent-msg-id'] as String?,
+        replyThreadParentUserLogin =
+            ircMessage.tags['reply-thread-parent-user-login'] as String?,
+        tmiSentTs = ircMessage.tags['tmi-sent-ts'] as int,
+        roomId = ircMessage.tags['room-id'] as int,
+        _emotes = hasEmote.parseEmotes(ircMessage),
+        super.parseIRC(ircMessage);
 }

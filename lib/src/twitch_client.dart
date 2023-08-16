@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:collection/collection.dart';
+import 'package:tmi_dart/src/messages/global_user_state_message.dart';
 import 'const/twitch_commands.dart';
 
 import 'channel.dart';
-import 'base/messages/message.dart';
-import 'raw/raw_message.dart';
-import 'base/user/user.dart';
+import 'base/message.dart';
+import 'raw/irc_message.dart';
+import 'base/user.dart';
 
 const String _baseUrl = 'wss://irc-ws.chat.twitch.tv:443';
 
@@ -22,7 +23,7 @@ class TwitchClient extends Stream<Message> {
 
   /// Socket
 
-  WebSocket _socket;
+  final WebSocket _socket;
 
   final LineSplitter _splitter = LineSplitter();
 
@@ -92,14 +93,14 @@ class TwitchClient extends Stream<Message> {
     }
 
     /// Doing a first parsing to separate tags, source, command and params
-    var message = RawMessage.parse(rawMessage);
+    var message = IRCMessage.parse(client: this, raw: rawMessage);
 
     /// Commands are always in uppercase so to avoid unnecessary transformations we are comparing uppercase values
     switch (message.command) {
       case globalUserState:
-        User newUser = User.fromMap(this, message.tags);
+        var globalUserState = GlobalUserStateMessage.parseIRC(message);
 
-        _user = newUser;
+        _user = globalUserState.user;
         break;
       case join:
         break;

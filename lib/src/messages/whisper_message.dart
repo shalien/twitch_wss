@@ -1,43 +1,27 @@
-import '../base/messages/emote_message.dart';
-import '../base/user/message_user.dart';
-import '../const/twitch_commands.dart';
-import '../twitch_client.dart';
+import 'dart:collection';
+
+import '../base/messages/message.dart';
+import '../mixin/has_emote.dart';
+import '../raw/irc_message.dart';
 
 import '../base/emote.dart';
-import '../base/user/user.dart';
 
-final class WhisperMessage extends EmoteMessage {
+final class WhisperMessage extends Message with hasEmote {
   /// An ID that uniquely identifies the whisper message.
   final String messageId;
 
   /// An ID that uniquely identifies the whisper message.
   final String threadId;
 
-  WhisperMessage._(
-      {required this.messageId,
-      required this.threadId,
-      required super.emotes,
-      required super.channel,
-      required super.content,
-      required super.user})
-      : super(command: whisper);
+  final List<Emote> _emotes;
 
-  factory WhisperMessage(TwitchClient client, Map<String, dynamic> map) {
-    User user = MessageUser.fromMap(client, map);
+  /// The emotes that were used in this message.
+  UnmodifiableListView get emotes => UnmodifiableListView(_emotes);
 
-    List<Emote> emotes = map['emotes'] == null
-        ? <Emote>[]
-        : (map['emotes'] as String)
-            .split(',')
-            .map((e) => Emote.fromRawString(e))
-            .toList();
-
-    return WhisperMessage._(
-        messageId: map['message_id'],
-        threadId: map['thread_id'],
-        emotes: emotes,
-        channel: map['recipient']['username'],
-        content: map['body'],
-        user: user);
-  }
+  /// The Twitch IRC server sends this message after someone sends your bot a whisper message
+  WhisperMessage.parseIRC(IRCMessage ircMessage)
+      : messageId = ircMessage.tags['message-id']!,
+        threadId = ircMessage.tags['thread-id']!,
+        _emotes = hasEmote.parseEmotes(ircMessage),
+        super.parseIRC(ircMessage);
 }

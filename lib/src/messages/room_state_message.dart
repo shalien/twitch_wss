@@ -1,6 +1,5 @@
 import 'package:meta/meta.dart';
-
-import '../const/twitch_commands.dart';
+import '../raw/irc_message.dart';
 
 import '../base/messages/message.dart';
 
@@ -30,26 +29,15 @@ final class RoomStateMessage extends Message {
   /// 	A Boolean value that determines whether only subscribers and moderators can chat in the chat room
   final bool? subsOnly;
 
-  const RoomStateMessage(
-      {required this.roomId,
-      this.emoteOnly,
-      this.followersOnly,
-      this.r9k,
-      this.slow,
-      this.subsOnly,
-      required super.channel})
-      : super(command: roomState, content: null);
-
-  factory RoomStateMessage.fromMap(
-      {required String? channel, required Map<String, dynamic> map}) {
-    return RoomStateMessage(
-      roomId: map['room-id'],
-      emoteOnly: map['emote-only'],
-      followersOnly: map['followers-only'],
-      r9k: map['r9k'],
-      slow: map['slow'],
-      subsOnly: map['subs-only'],
-      channel: channel,
-    );
-  }
+  /// The Twitch IRC server sends this message after a bot joins a channel or when the channel’s chat room settings change.
+  /// For JOIN messages, the message contains all chat room setting tags, but for actions that change a single chat room setting, the message includes only that chat room setting tag.
+  /// For example, if the moderator turned on unique chat, the message includes only the r9k tag.
+  RoomStateMessage.parseIRC(IRCMessage ircMessage)
+      : emoteOnly = ircMessage.tags['emote-only'] == '1',
+        followersOnly = int.tryParse(ircMessage.tags['followers-only'] ?? ''),
+        r9k = ircMessage.tags['r9k'] == '1',
+        roomId = int.tryParse(ircMessage.tags['room-id'] ?? '') ?? 0,
+        slow = int.tryParse(ircMessage.tags['slow'] ?? ''),
+        subsOnly = ircMessage.tags['subs-only'] == '1',
+        super.parseIRC(ircMessage);
 }

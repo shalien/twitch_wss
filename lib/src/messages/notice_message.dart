@@ -1,4 +1,4 @@
-import 'package:tmi_dart/src/const/twitch_commands.dart';
+import '../raw/irc_message.dart';
 
 import '../base/messages/message.dart';
 
@@ -12,25 +12,9 @@ final class NoticeMessage extends Message {
   final int targetUserId;
 
   /// The Twitch IRC server sends this message to indicate the outcome of the action
-  const NoticeMessage._(
-      {required this.msgId,
-      required this.targetUserId,
-      required super.channel,
-      required super.content})
-      : super(command: notice);
-
-  /// The Twitch IRC server sends this message to indicate the outcome of the action
-  factory NoticeMessage.fromMap(
-      {required String? channel,
-      required String? content,
-      required Map<String, dynamic> map}) {
-    String msgId = map['msg-id'];
-    int targetUserId = map['target-user-id'];
-
-    return NoticeMessage._(
-        msgId: msgId,
-        targetUserId: targetUserId,
-        channel: channel,
-        content: content);
-  }
+  @override
+  NoticeMessage.parseIRC(IRCMessage ircMessage)
+      : msgId = ircMessage.tags['msg-id']!,
+        targetUserId = int.parse(ircMessage.tags['target-user-id']!),
+        super.parseIRC(ircMessage);
 }

@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:meta/meta.dart';
+import 'package:tmi_dart/src/twitch_client.dart';
 
 import 'raw_source.dart';
 
@@ -8,28 +9,30 @@ const List<String> _tagsToIgnore = ['client-nonce', 'flags'];
 
 @immutable
 @internal
-final class RawMessage {
+final class IRCMessage {
   final Map<String, dynamic> _tags;
 
   final String? channel;
 
-  final String? command;
+  final String command;
 
-  final String? params;
+  final String? content;
 
   final RawSource? source;
 
   UnmodifiableMapView<String, dynamic> get tags => UnmodifiableMapView(_tags);
 
-  const RawMessage._(
-    this._tags, {
-    required this.channel,
-    required this.command,
-    required this.params,
-    required this.source,
-  });
+  final TwitchClient client;
 
-  factory RawMessage.parse(String raw) {
+  const IRCMessage._(this._tags,
+      {required this.channel,
+      required this.command,
+      required this.content,
+      required this.source,
+      required this.client});
+
+  factory IRCMessage.parse(
+      {required TwitchClient client, required String raw}) {
     Map<String, dynamic> tags = <String, dynamic>{};
     RawSource? source;
     String? params;
@@ -93,12 +96,20 @@ final class RawMessage {
       List<String> endLine = raw.substring(startIndex).trim().split(' ');
 
       channel = endLine.first;
-      params = endLine.skip(1).join(' ').substring(1);
+      params = endLine.length <= 1
+          ? null
+          : endLine.sublist(1).join(' ').startsWith(':')
+              ? endLine.sublist(1).join(' ').substring(1)
+              : endLine.sublist(1).join(' ');
     }
 
     /// End parsing params
 
-    return RawMessage._(tags,
-        source: source, channel: channel, command: command, params: params);
+    return IRCMessage._(tags,
+        source: source,
+        channel: channel,
+        command: command,
+        content: params,
+        client: client);
   }
 }

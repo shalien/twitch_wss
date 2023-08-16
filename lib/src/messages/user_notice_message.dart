@@ -1,16 +1,16 @@
-import 'package:tmi_dart/src/const/twitch_commands.dart';
+import 'dart:collection';
 
-import '../base/messages/emote_message.dart';
-import '../base/user/message_user.dart';
+import 'package:tmi_dart/src/base/messages/message.dart';
+import 'package:tmi_dart/src/mixin/has_emote.dart';
+import 'package:tmi_dart/src/raw/irc_message.dart';
 
 import '../base/emote.dart';
-import '../twitch_client.dart';
 
 /// The Twitch IRC server sends this message after the following events occur:
 /// A user subscribes to the channel, re-subscribes to the channel, or gifts a subscription to another user.
 /// A broadcaster raids the channel. Raid is a Twitch feature that lets broadcasters send their viewers to another channel to help support and grow other members in the community.
 /// A viewer milestone is celebrated such as a new viewer chatting for the first time. These celebrations are called rituals.
-final class UserNoticeMessage extends EmoteMessage {
+final class UserNoticeMessage extends Message with hasEmote {
   /// The id of the message.
   final int id;
 
@@ -124,91 +124,53 @@ final class UserNoticeMessage extends EmoteMessage {
   /// The UNIX timestamp for when the Twitch IRC server received the message.
   final int tmiSentTs;
 
-  /// The Twitch IRC server sends this message after the following events occur:
-  /// A user subscribes to the channel, re-subscribes to the channel, or gifts a subscription to another user.
-  /// A broadcaster raids the channel. Raid is a Twitch feature that lets broadcasters send their viewers to another channel to help support and grow other members in the community.
-  /// A viewer milestone is celebrated such as a new viewer chatting for the first time. These celebrations are called rituals.
-  const UserNoticeMessage._({
-    required super.channel,
-    required super.content,
-    required super.emotes,
-    this.id = 0,
-    this.login = '',
-    this.msgId = '',
-    this.msgParamCumulativeMonths,
-    this.msgParamDisplayName,
-    this.msgParamLogin,
-    this.msgParamMonths,
-    this.msgParamPromoGiftTotal,
-    this.msgParamPromoName,
-    this.msgParamRecipientDisplayName,
-    this.msgParamRecipientId,
-    this.msgParamRecipientUserName,
-    this.msgParamSenderLogin,
-    this.msgParamSenderName,
-    this.msgParamShouldShareStreak,
-    this.msgParamStreakMonths,
-    this.msgParamSubPlan,
-    this.msgParamSubPlanName,
-    this.msgParamViewerCount,
-    this.msgParamRitualName,
-    this.msgParamThreshold,
-    this.msgParamGiftMonths,
-    required super.user,
-    this.roomId = '',
-    this.systemMsg = '',
-    this.tmiSentTs = 0,
-  }) : super(command: userNotice);
+  final List<Emote> _emotes;
+
+  /// The emotes that were used in this message.
+  UnmodifiableListView get emotes => UnmodifiableListView(_emotes);
 
   /// The Twitch IRC server sends this message after the following events occur:
   /// A user subscribes to the channel, re-subscribes to the channel, or gifts a subscription to another user.
   /// A broadcaster raids the channel. Raid is a Twitch feature that lets broadcasters send their viewers to another channel to help support and grow other members in the community.
   /// A viewer milestone is celebrated such as a new viewer chatting for the first time. These celebrations are called rituals.
-  factory UserNoticeMessage.fromMap(
-      {String? channel,
-      required TwitchClient client,
-      required String? content,
-      required Map<String, dynamic> map}) {
-    List<Emote> emotes = map['emotes'] == null
-        ? <Emote>[]
-        : (map['emotes'] as String)
-            .split(',')
-            .map((e) => Emote.fromRawString(e))
-            .toList();
-
-    MessageUser user = MessageUser.fromMap(client, map);
-
-    return UserNoticeMessage._(
-      channel: channel ?? '',
-      content: content ?? '',
-      emotes: emotes,
-      id: map['id'] ?? 0,
-      login: map['login'] ?? '',
-      msgId: map['msg-id'] ?? '',
-      msgParamCumulativeMonths: map['msg-param-cumulative-months'] ?? 0,
-      msgParamDisplayName: map['msg-param-displayName'] ?? '',
-      msgParamLogin: map['msg-param-login'] ?? '',
-      msgParamMonths: map['msg-param-months'] ?? 0,
-      msgParamPromoGiftTotal: map['msg-param-promo-gift-total'] ?? 0,
-      msgParamPromoName: map['msg-param-promo-name'] ?? '',
-      msgParamRecipientDisplayName:
-          map['msg-param-recipient-display-name'] ?? '',
-      msgParamRecipientId: map['msg-param-recipient-id'] ?? 0,
-      msgParamRecipientUserName: map['msg-param-recipient-user-name'] ?? '',
-      msgParamSenderLogin: map['msg-param-sender-login'] ?? '',
-      msgParamSenderName: map['msg-param-sender-name'] ?? '',
-      msgParamShouldShareStreak: map['msg-param-should-share-streak'] ?? false,
-      msgParamStreakMonths: map['msg-param-streak-months'] ?? 0,
-      msgParamSubPlan: map['msg-param-sub-plan'] ?? '',
-      msgParamSubPlanName: map['msg-param-sub-plan-name'] ?? '',
-      msgParamViewerCount: map['msg-param-viewerCount'] ?? 0,
-      msgParamRitualName: map['msg-param-ritual-name'] ?? '',
-      msgParamThreshold: map['msg-param-threshold'] ?? 0,
-      msgParamGiftMonths: map['msg-param-gift-months'] ?? 0,
-      user: user,
-      roomId: map['room-id'] ?? '',
-      systemMsg: map['system-msg'] ?? '',
-      tmiSentTs: map['tmi-sent-ts'] ?? 0,
-    );
-  }
+  @override
+  UserNoticeMessage.parseIRC(IRCMessage ircMessage)
+      : id = int.tryParse(ircMessage.tags['id'] ?? '') ?? 0,
+        login = ircMessage.tags['login'] ?? '',
+        msgId = ircMessage.tags['msg-id'] ?? '',
+        msgParamCumulativeMonths =
+            int.tryParse(ircMessage.tags['msg-param-cumulative-months'] ?? ''),
+        msgParamDisplayName = ircMessage.tags['msg-param-displayName'] ?? '',
+        msgParamLogin = ircMessage.tags['msg-param-login'] ?? '',
+        msgParamMonths =
+            int.tryParse(ircMessage.tags['msg-param-months'] ?? ''),
+        msgParamPromoGiftTotal =
+            int.tryParse(ircMessage.tags['msg-param-promo-gift-total'] ?? ''),
+        msgParamPromoName = ircMessage.tags['msg-param-promo-name'] ?? '',
+        msgParamRecipientDisplayName =
+            ircMessage.tags['msg-param-recipient-display-name'] ?? '',
+        msgParamRecipientId =
+            int.tryParse(ircMessage.tags['msg-param-recipient-id'] ?? ''),
+        msgParamRecipientUserName =
+            ircMessage.tags['msg-param-recipient-user-name'] ?? '',
+        msgParamSenderLogin = ircMessage.tags['msg-param-sender-login'] ?? '',
+        msgParamSenderName = ircMessage.tags['msg-param-sender-name'] ?? '',
+        msgParamShouldShareStreak =
+            ircMessage.tags['msg-param-should-share-streak'] == '1',
+        msgParamStreakMonths =
+            int.tryParse(ircMessage.tags['msg-param-streak-months'] ?? ''),
+        msgParamSubPlan = ircMessage.tags['msg-param-sub-plan'] ?? '',
+        msgParamSubPlanName = ircMessage.tags['msg-param-sub-plan-name'] ?? '',
+        msgParamViewerCount =
+            int.tryParse(ircMessage.tags['msg-param-viewerCount'] ?? ''),
+        msgParamRitualName = ircMessage.tags['msg-param-ritual-name'] ?? '',
+        msgParamThreshold =
+            int.tryParse(ircMessage.tags['msg-param-threshold'] ?? ''),
+        msgParamGiftMonths =
+            int.tryParse(ircMessage.tags['msg-param-gift-months'] ?? ''),
+        roomId = ircMessage.tags['room-id'] ?? '',
+        systemMsg = ircMessage.tags['system-msg'] ?? '',
+        tmiSentTs = int.tryParse(ircMessage.tags['tmi-sent-ts'] ?? '') ?? 0,
+        _emotes = hasEmote.parseEmotes(ircMessage.tags['emotes'] ?? ''),
+        super.parseIRC(ircMessage);
 }
